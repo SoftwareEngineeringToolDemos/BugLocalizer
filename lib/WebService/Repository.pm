@@ -22,7 +22,7 @@ sub getFileList {
     my $stdout = `git diff --name-only $git_revision^ $git_revision`;
     my @filelist = split('\s+',$stdout);
     my @filteredList = sort grep(/\.java$/,@filelist);
-    chdir '/var/www/bugzilla-4.4.4/';
+    chdir '/var/www/html/';
     return {filelist => \@filteredList};
 }
 
