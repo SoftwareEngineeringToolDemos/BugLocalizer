@@ -52,7 +52,7 @@ sub template_before_process {
 	my $pwd = getcwd;
 	$pwd =~ m|([^\0]+)|;
 	$pwd = $1;
-	chdir 'extensions/BugLocalizer/repository/'.$vars->{bugs}[0]->product;
+	chdir 'extensions/BugLocalizer/repository/'.$vars->{bug}->product;
         my $result = `git tag`;
         $result =~ s/refs\/tags\///g;
         my @tags  = sort {$b cmp $a} split('\s',$result);
