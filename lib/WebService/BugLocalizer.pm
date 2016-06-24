@@ -9,6 +9,11 @@ use Cwd;
 use XML::Writer;
 use IO::File;
 
+use constant PUBLIC_METHODS => qw{
+	localize
+	
+};
+
 sub localize {
     my ($self, $params) = @_;
     my $dbh = Bugzilla->dbh;
@@ -56,7 +61,7 @@ sub localize {
     $writer->endTag("bug");
     $writer->endTag("bugrepository");
     $writer->end();
-    $output->close();
+    #$output->close();
 
     chdir '..';
     my $stdout = `java -jar $pwd/extensions/BugLocalizer/app/FBL.jar -b $pwd/extensions/BugLocalizer/repository/tmp/bug_repository.xml -s $pwd/extensions/BugLocalizer/repository/tmp/TestProduct/ -a 0.2 -o $pwd/extensions/BugLocalizer/repository/tmp/output.txt`;
